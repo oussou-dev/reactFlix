@@ -1,2 +1,0 @@
-# reactFlix
-Created with CodeSandbox

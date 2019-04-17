@@ -3,12 +3,13 @@ import VideoListItem from "../components/VideoListItem"
 
 class VideoList extends React.Component {
 	render() {
-		const movies = ["fiml 1", "fiml 2", "fiml 3"]
+		const { movieList } = this.props
+		console.log(movieList)
 		return (
 			<div>
 				<ul>
-					{movies.map(movie => (
-						<VideoListItem key={movie} movie={movie} />
+					{movieList.map(movie => (
+						<VideoListItem key={movie.id} movie={movie} />
 					))}
 				</ul>
 			</div>

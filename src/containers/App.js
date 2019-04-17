@@ -13,26 +13,36 @@ class App extends React.Component {
 	constructor(props) {
 		super(props)
 
-		this.state = { movies: {}, currentMovie: {} }
+		this.state = { movieList: {}, currentMovie: {} }
 	}
 
 	componentWillMount() {
+		this.initMovies()
+	}
+
+	initMovies = () => {
 		axios
 			.get(`${API_END_POINT}${POPULAR_MOVIES_URL}&${API_KEY}`)
 			.then(res => {
 				this.setState({
-					movies: res.data.results.slice(1, 6),
+					movieList: res.data.results.slice(1, 6),
 					currentMovie: res.data.results[0]
 				})
-				console.log(this.state.movies)
+				console.log(this.state.movieList)
 			})
 	}
 
 	render() {
+		const renderVideoList = () => {
+			if (this.state.movieList.length >= 5) {
+				return <VideoList movieList={this.state.movieList} />
+			}
+		}
 		return (
 			<div className="">
 				<SearchBar />
-				<VideoList />
+				{renderVideoList()}
+				{/* <VideoList movieList={this.state.movieList} /> */}
 				<VideoDetail
 					title={this.state.currentMovie.title}
 					description={this.state.currentMovie.overview}

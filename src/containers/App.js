@@ -7,6 +7,7 @@ import {
 	API_KEY,
 	POPULAR_MOVIES_URL
 } from "../../tmdbAPI/tmdbAPI"
+import VideoDetail from "../components/VideoDetail"
 
 class App extends React.Component {
 	constructor(props) {
@@ -32,6 +33,10 @@ class App extends React.Component {
 			<div className="">
 				<SearchBar />
 				<VideoList />
+				<VideoDetail
+					title={this.state.currentMovie.title}
+					description={this.state.currentMovie.overview}
+				/>
 			</div>
 		)
 	}

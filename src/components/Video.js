@@ -9,6 +9,7 @@ const Video = ({ videoId }) => {
 				className="embed-responsive-item"
 				src={`${BASE_URL}${videoId}`}
 			/>
+
 		</div>
 	)
 }

@@ -63,6 +63,7 @@ class App extends React.Component {
 			}
 		}
 		return (
+
 			<div className="container">
 				<div className="search_bar">
 					<SearchBar />
@@ -77,6 +78,7 @@ class App extends React.Component {
 					</div>
 					<div className="col-md-4"> {renderVideoList()}</div>
 				</div>
+
 			</div>
 		)
 	}

@@ -1,14 +1,13 @@
 import React from "react"
 
-class Video extends React.Component {
-	render() {
-		return (
-			<div className="App">
-				<h1>Hello CodeSandbox</h1>
-				<h2>Start editing to see some magic happen!</h2>
-			</div>
-		)
-	}
+const Video = ({ videoId }) => {
+	const BASE_URL = "https://www.youtube.com/embed/"
+
+	return (
+		<div className="App">
+			<iframe src={`${BASE_URL}${videoId}`} />
+		</div>
+	)
 }
 
 export default Video

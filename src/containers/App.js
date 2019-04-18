@@ -8,6 +8,7 @@ import {
 	POPULAR_MOVIES_URL
 } from "../../tmdbAPI/tmdbAPI"
 import VideoDetail from "../components/VideoDetail"
+import Video from "../components/Video"
 
 class App extends React.Component {
 	constructor(props) {
@@ -43,7 +44,7 @@ class App extends React.Component {
 				}?${API_KEY}&append_to_response=videos&include_adult=false`
 			)
 			.then(res => {
-				console.log(res)
+				// console.log(res)
 				const youtubekey = res.data.videos.results[0].key
 				// copie de la clef youtude dans le current movie
 				let newCurrentMovieState = { ...this.state.currentMovie }
@@ -62,14 +63,20 @@ class App extends React.Component {
 			}
 		}
 		return (
-			<div className="">
-				<SearchBar />
-				{renderVideoList()}
-				{/* <VideoList movieList={this.state.movieList} /> */}
-				<VideoDetail
-					title={this.state.currentMovie.title}
-					description={this.state.currentMovie.overview}
-				/>
+			<div className="container">
+				<div className="search_bar">
+					<SearchBar />
+				</div>
+				<div className="row">
+					<div className="col-md-8">
+						<Video videoId={this.state.currentMovie.videoId} />
+						<VideoDetail
+							title={this.state.currentMovie.title}
+							description={this.state.currentMovie.overview}
+						/>
+					</div>
+					<div className="col-md-4"> {renderVideoList()}</div>
+				</div>
 			</div>
 		)
 	}

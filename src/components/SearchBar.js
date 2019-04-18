@@ -19,14 +19,17 @@ class SearchBar extends React.Component {
 
 	render() {
 		return (
-			<>
-				<input
-					type="text"
-					onChange={this.handleChange}
-					placeholder={this.state.placeholder}
-				/>
-				<p>{this.state.searchText}</p>
-			</>
+			<div className="row">
+				<div className="col-md-8">
+					<input
+						type="text"
+						onChange={this.handleChange}
+						placeholder={this.state.placeholder}
+						className="form-control input-lg"
+					/>
+					<p>{this.state.searchText}</p>
+				</div>
+			</div>
 		)
 	}
 }

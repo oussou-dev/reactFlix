@@ -24,11 +24,34 @@ class App extends React.Component {
 		axios
 			.get(`${API_END_POINT}${POPULAR_MOVIES_URL}&${API_KEY}`)
 			.then(res => {
+				this.setState(
+					{
+						movieList: res.data.results.slice(1, 6),
+						currentMovie: res.data.results[0]
+					},
+					() => this.applyVideoToCurrentMovie()
+				)
+				// console.log(this.state.movieList)
+			})
+	}
+
+	applyVideoToCurrentMovie = () => {
+		axios
+			.get(
+				`${API_END_POINT}movie/${
+					this.state.currentMovie.id
+				}?${API_KEY}&append_to_response=videos&include_adult=false`
+			)
+			.then(res => {
+				console.log(res)
+				const youtubekey = res.data.videos.results[0].key
+				// copie de la clef youtude dans le current movie
+				let newCurrentMovieState = { ...this.state.currentMovie }
+				newCurrentMovieState.videoId = youtubekey
 				this.setState({
-					movieList: res.data.results.slice(1, 6),
-					currentMovie: res.data.results[0]
+					currentMovie: newCurrentMovieState
 				})
-				console.log(this.state.movieList)
+				// console.log(newCurrentMovieState)
 			})
 	}
 

@@ -4,7 +4,7 @@ import VideoListItem from "../components/VideoListItem"
 class VideoList extends React.Component {
 	render() {
 		const { movieList } = this.props
-		console.log(movieList)
+		// console.log(movieList)
 		return (
 			<div>
 				<ul>

@@ -8,6 +8,7 @@ import {
 	POPULAR_MOVIES_URL
 } from "../../tmdbAPI/tmdbAPI"
 import VideoDetail from "../components/VideoDetail"
+import Video from "../components/Video"
 
 class App extends React.Component {
 	constructor(props) {
@@ -64,6 +65,7 @@ class App extends React.Component {
 		return (
 			<div className="">
 				<SearchBar />
+				<Video videoId={this.state.currentMovie.videoId} />
 				{renderVideoList()}
 				{/* <VideoList movieList={this.state.movieList} /> */}
 				<VideoDetail

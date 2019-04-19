@@ -4,7 +4,7 @@ const VideoListItem = ({ movie, callback }) => {
 	const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500/"
 
 	return (
-		<li className="list-group-item" onClick={callback}>
+		<li className="list-group-item" onClick={() => callback(movie)}>
 			<div className="media">
 				<div className="media-left">
 					<img

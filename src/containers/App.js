@@ -5,7 +5,8 @@ import axios from "axios"
 import {
 	API_END_POINT,
 	API_KEY,
-	POPULAR_MOVIES_URL
+	POPULAR_MOVIES_URL,
+	SEARCH_URL
 } from "../../tmdbAPI/tmdbAPI"
 import VideoDetail from "../components/VideoDetail"
 import Video from "../components/Video"
@@ -56,7 +57,7 @@ class App extends React.Component {
 			})
 	}
 
-	receiveCallBack = movie => {
+	onClickListItem = movie => {
 		this.setState(
 			{
 				currentMovie: movie
@@ -65,6 +66,32 @@ class App extends React.Component {
 				this.applyVideoToCurrentMovie()
 			}
 		)
+		console.log(movie)
+	}
+
+	onClickSearch = searchText => {
+		if (searchText) {
+			axios
+				.get(
+					`${API_END_POINT}${SEARCH_URL}&${API_KEY}&query=${searchText}`
+				)
+				.then(res => {
+					if (res.data && res.data.results[0]) {
+						if (
+							res.data.results[0].id !== this.state.currentMovie.id
+						) {
+							this.setState(
+								{
+									currentMovie: res.data.results[0]
+								},
+								() => {
+									this.applyVideoToCurrentMovie()
+								}
+							)
+						}
+					}
+				})
+		}
 	}
 
 	render() {
@@ -73,7 +100,7 @@ class App extends React.Component {
 				return (
 					<VideoList
 						movieList={this.state.movieList}
-						receiveCallBack={this.receiveCallBack}
+						receiveCallBack={this.onClickListItem}
 					/>
 				)
 			}
@@ -81,7 +108,7 @@ class App extends React.Component {
 		return (
 			<div className="container">
 				<div className="search_bar">
-					<SearchBar />
+					<SearchBar callback={this.onClickSearch} />
 				</div>
 				<div className="row">
 					<div className="col-md-8">

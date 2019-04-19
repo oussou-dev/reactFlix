@@ -17,17 +17,29 @@ class SearchBar extends React.Component {
 		})
 	}
 
+	handleOnClick = () => {
+		console.log("click")
+	}
+
 	render() {
+		const { callback } = this.props
 		return (
 			<div className="row">
-				<div className="col-md-8">
+				<div className="col-md-8 input-group">
 					<input
 						type="text"
 						onChange={this.handleChange}
 						placeholder={this.state.placeholder}
 						className="form-control input-lg"
 					/>
-					<p>{this.state.searchText}</p>
+					<span className="input-group-btn">
+						<button
+							className="btn btn-secondary"
+							onClick={() => callback(this.state.searchText)}
+						>
+							GO !
+						</button>
+					</span>
 				</div>
 			</div>
 		)

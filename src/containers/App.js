@@ -64,6 +64,7 @@ class App extends React.Component {
 			},
 			() => {
 				this.applyVideoToCurrentMovie()
+				this.setRecommendation()
 			}
 		)
 		console.log(movie)
@@ -86,12 +87,27 @@ class App extends React.Component {
 								},
 								() => {
 									this.applyVideoToCurrentMovie()
+									this.setRecommendation()
 								}
 							)
 						}
 					}
 				})
 		}
+	}
+
+	setRecommendation = () => {
+		axios
+			.get(
+				`${API_END_POINT}movie/${
+					this.state.currentMovie.id
+				}/recommendations?${API_KEY}&language=fr}`
+			)
+			.then(res => {
+				this.setState({
+					movieList: res.data.results.slice(0, 5)
+				})
+			})
 	}
 
 	render() {

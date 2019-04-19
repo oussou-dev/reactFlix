@@ -3,12 +3,8 @@ import React from "react"
 const VideoListItem = ({ movie, callback }) => {
 	const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500/"
 
-	const handleOnClick = () => {
-		callback(movie)
-	}
-
 	return (
-		<li className="list-group-item" onClick={handleOnClick}>
+		<li className="list-group-item" onClick={callback}>
 			<div className="media">
 				<div className="media-left">
 					<img

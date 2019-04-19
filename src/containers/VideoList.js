@@ -2,11 +2,8 @@ import React from "react"
 import VideoListItem from "../components/VideoListItem"
 
 class VideoList extends React.Component {
-	receiveCallBack = movie => {
-		console.log("VideoList", movie)
-	}
 	render() {
-		const { movieList } = this.props
+		const { movieList, receiveCallBack } = this.props
 		return (
 			<div>
 				<ul>
@@ -14,7 +11,7 @@ class VideoList extends React.Component {
 						<VideoListItem
 							key={movie.id}
 							movie={movie}
-							callback={this.receiveCallBack}
+							callback={receiveCallBack}
 						/>
 					))}
 				</ul>

@@ -1,4 +1,18 @@
 .App {
-  font-family: sans-serif;
-  text-align: center;
+	font-family: sans-serif;
+	text-align: center;
+}
+
+.search_bar {
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
+
+li:hover {
+	background-color: #e0e0e0;
+}
+
+.title_list_item {
+	padding-top: 40px;
+	text-align: center;
 }

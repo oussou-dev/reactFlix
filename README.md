@@ -25,12 +25,13 @@ _Note: You may need to add “sudo” in front of any global commands to install
 
 ## Features
 
-|                           |                              |
-| ------------------------- | ---------------------------- |
-| [x] Adding Bootstrap 4    | [x] Installing axios         |
-| [x] Setting up todos list | [x] Creating mock api online |
-| [x] Setting up todos list | [x] Fetching mock api online |
-| [x] Creating todos        | [x] Creating todos on api    |  |
+|                      |                              |
+| -------------------- | ---------------------------- |
+| [x] Search Bar       | [x] Doing request with axios |
+| [x] Search List      | [x] Adding BootStrap 4       |
+| [x] Video List Item  | [x] Instant Recommendations  |
+| [x] Video Detail     | [ ] Instant Searching        |
+| [x] Displaying Video | [x] Using TheMovieDB API     |
 
 ## ScreenCast
 

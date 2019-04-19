@@ -6,23 +6,33 @@ class SearchBar extends React.Component {
 
 		this.state = {
 			searchText: "",
-			placeholder: "Saisir votre film..."
+			placeholder: "Saisir votre film...",
+			intervalBeforeRequest: 1000,
+			lockRequest: false
 		}
 	}
 
 	handleChange = e => {
-		console.log("handleChange", e.target.value)
 		this.setState({
 			searchText: e.target.value
 		})
+		if (!this.state.lockRequest) {
+			this.setState({ lockRequest: true })
+			setTimeout(() => this.search, this.state.intervalBeforeRequest)
+		}
 	}
 
 	handleOnClick = () => {
-		console.log("click")
+		this.search()
+	}
+
+	search = () => {
+		this.props.callback(this.state.searchText)
+		this.setState({ lockRequest: false })
 	}
 
 	render() {
-		const { callback } = this.props
+		// const { callback } = this.props
 		return (
 			<div className="row">
 				<div className="col-md-8 input-group">
@@ -35,7 +45,7 @@ class SearchBar extends React.Component {
 					<span className="input-group-btn">
 						<button
 							className="btn btn-secondary"
-							onClick={() => callback(this.state.searchText)}
+							onClick={this.handleOnClick}
 						>
 							GO !
 						</button>

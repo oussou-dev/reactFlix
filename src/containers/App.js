@@ -15,7 +15,10 @@ class App extends React.Component {
 	constructor(props) {
 		super(props)
 
-		this.state = { movieList: {}, currentMovie: {} }
+		this.state = {
+			movieList: {},
+			currentMovie: {}
+		}
 	}
 
 	componentWillMount() {
@@ -67,7 +70,7 @@ class App extends React.Component {
 				this.setRecommendation()
 			}
 		)
-		console.log(movie)
+		// console.log(movie)
 	}
 
 	onClickSearch = searchText => {
